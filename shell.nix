@@ -6,5 +6,7 @@ pkgs.mkShell {
     pkgs.python3
 
     pkgs.python3Packages.pynput
+
+    pkgs.poetry
   ];
 }

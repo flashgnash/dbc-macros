@@ -11,13 +11,14 @@ is_left_held = False
 
 def on_click(x, y, button, pressed):
     global is_left_held
-    if button == mouse.Button.left:
+    if button == mouse.Button.middle:
         is_left_held = pressed
         if pressed:
             # Start the alternating task when the left mouse button is pressed
             thread = threading.Thread(target=alternate_clicks)
             thread.start()
-
+            
+            mouse_controller.release(mouse.Button.left)
 def alternate_clicks():
     counter = 1
     while is_left_held:
@@ -36,7 +37,7 @@ def alternate_clicks():
         counter += 1
         
         # Add a small delay to control the speed of alternation
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 def main():
     # Start listening to mouse events
