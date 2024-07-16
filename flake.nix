@@ -42,7 +42,6 @@
           poetry
 
           linuxHeaders
-          pkgs.python3Packages.pynput
         ];
       };
       

@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pynput = "^1.7.6"
 
 [tool.poetry.scripts]
 multiwield = "dbc_macros.dual_wield:main"
