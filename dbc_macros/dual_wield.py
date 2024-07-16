@@ -2,6 +2,9 @@ from pynput import mouse, keyboard
 import threading
 import time
 
+
+print("Testing")
+
 # Initialize the keyboard controller
 kb_controller = keyboard.Controller()
 mouse_controller = mouse.Controller()
