@@ -11,7 +11,6 @@ def on_press(key):
     try:
         if key.char == 'q':  # Check if the 'Q' key is pressed
             # Press the '9' key
-            print("Test")
             kb_controller.press('9')
             kb_controller.release('9')
 
