@@ -8,9 +8,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 
-[tool.poetry.scripts]
-multiwield = "dbc_macros.dual_wield:main"
-senzu = "dbc_macros.senzu:main"
 
 [build-system]
 requires = ["poetry-core"]
