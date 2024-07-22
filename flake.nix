@@ -34,6 +34,13 @@
           # replace <script> with the name in the [tool.poetry.scripts] section of your pyproject.toml
           program = "${myPythonApp}/bin/senzu";
         };
+
+        autoclicker = {
+          type = "app";
+          # replace <script> with the name in the [tool.poetry.scripts] section of your pyproject.toml
+          program = "${myPythonApp}/bin/autoclicker";
+        };
+        
       };
            
       devShells.${system}.default = pkgs.mkShell {

@@ -1,42 +1,33 @@
-from pynput import keyboard, mouse
+from pynput import mouse, keyboard
 import threading
 import time
 
-# Initialize the mouse controller
+# Initialize the keyboard controller
+kb_controller = keyboard.Controller()
 mouse_controller = mouse.Controller()
 
-# Flag to indicate if 'T' key is held
-is_t_held = False
+# Flag to indicate if left mouse button is held
+is_left_held = False
 
-def on_press(key):
-    global is_t_held
-    try:
-        if key.char == 't':  # Check if the 'T' key is pressed
-            if not is_t_held:
-                is_t_held = True
-                # Start the autoclicking task when 'T' key is pressed
-                thread = threading.Thread(target=autoclick)
-                thread.start()
-    except AttributeError:
-        pass
-
-def on_release(key):
-    global is_t_held
-    try:
-        if key.char == 't':  # Check if the 'T' key is released
-            is_t_held = False
-    except AttributeError:
-        pass
-
-def autoclick():
-    while is_t_held:
+def on_click(x, y, button, pressed):
+    global is_left_held
+    if button == mouse.Button.middle:
+        is_left_held = pressed
+        if pressed:
+            # Start the alternating task when the left mouse button is pressed
+            thread = threading.Thread(target=alternate_clicks)
+            thread.start()
+            
+            mouse_controller.release(mouse.Button.left)
+def alternate_clicks():
+    while is_left_held:
+        # Press '1' and left mouse button
         mouse_controller.click(mouse.Button.left)
-        # No delay for maximum clicking speed
-        time.sleep(0.001)  # Optional: small sleep to prevent CPU overuse
+        time.sleep(0.1)
 
 def main():
-    # Start listening to keyboard events
-    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    # Start listening to mouse events
+    with mouse.Listener(on_click=on_click) as listener:
         listener.join()
 
 if __name__ == "__main__":

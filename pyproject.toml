@@ -12,6 +12,7 @@ pynput = "^1.7.6"
 [tool.poetry.scripts]
 multiwield = "dbc_macros.dual_wield:main"
 senzu = "dbc_macros.senzu:main"
+autoclicker = "dbc_macros.autoclicker:main"
 
 [build-system]
 requires = ["poetry-core"]
